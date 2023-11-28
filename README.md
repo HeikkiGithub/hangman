@@ -1,7 +1,7 @@
 # Hangman game
-The classic hangman game as a full-stack app. You can play the game at: https://student.labranet.jamk.fi/~AE9377/hangman_client_side/index.html
-It is recommended to use Firefox. 
-With other browsers, and especially on phones, the layout may vary unexpectedly. 
+The classic hangman game as a full-stack app. You can play the game at https://student.labranet.jamk.fi/~AE9377/hangman_client_side/index.html
+
+It is recommended to use Firefox. With other browsers, and especially on phones, the layout may vary unexpectedly. 
 
 # Hirsipuu-peli: ohjelman kuvaus
 Toteutettuna klassinen hirsipuu-peli full-stack sovelluksena. Tämä on ensimmäinen full-stack sovellukseni, joka on tehty harjoitustyönä JAMK:n full stack-kurssilla. 
