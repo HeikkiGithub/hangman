@@ -1,5 +1,5 @@
-# hangman
-Hangman full-stack app
+# Hangman-game
+A classic hangman game - full-stack app.
 
 # Hirsipuu-peli: full-stack sovelluksena
 Toteutettuna klassinen hirsipuu-peli full-stack sovelluksena. Tämä on ensimmäinen full-stack sovellukseni, joka on tehty harjoitustyönä JAMK:n full stack-kurssilla. 
