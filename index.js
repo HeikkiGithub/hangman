@@ -23,8 +23,8 @@ app.use(express.json());
 
 // Yhteys MongoDB tietokantaan mongoose-kirjastoa käyttäen
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb+srv://mongoUser:mongo@democluster.mnjnvsa.mongodb.net/hangmanDB?retryWrites=true&w=majority'          // Connection string, SAAKO SALASANAN POIS NÄKYVISTÄ???
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});                                                // Otetaan yhteys tietokantaan: MongoDB driver käyttää URL Parser (erottelee URL:n)
+const mongoDB = 'mongodb+srv://mongoUser:mongo@democluster.mnjnvsa.mongodb.net/hangmanDB?retryWrites=true&w=majority'   
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});                                              
 
 // Testataan toimiiko yhteys ja tulostetaan vastaus konsoliin
 const db = mongoose.connection
@@ -71,8 +71,8 @@ Palvelimella seuraavat API-rajapinnat:
 
 // USERS API:t
 
-// POST-pyynnön käsittelijä (handler): Käyttäjän luonti tietokantaan (annettava nimi ja vaikeusaste). TOIMII!
-app.post('/users', async (request, response) => {       // reitti app.post kuuntelee POST-pyyntöjä /users endpointissa. Toinen parametri, async-funktio, käsittelee pyynnön
+// POST-pyynnön käsittelijä (handler): Käyttäjän luonti tietokantaan (annettava nimi ja vaikeusaste).
+app.post('/users', async (request, response) => {       
     const { name, game_level } = request.body                    
 
     // Jos nimi tai vaikeusaste uupuu, lähetetään 400-virhestatus
@@ -80,23 +80,23 @@ app.post('/users', async (request, response) => {       // reitti app.post kuunt
         return response.status(400).json({ error: "Name and game level required." });
     }
 
-    const user = new User({                             // Uuden user-objektin luonti mongoose-mallin mukaan
+    const user = new User({                             
       name: name,
-      points: 0,                                        // Lähtökohtaisesti 0 pistettä aluksi
+      points: 0,                                       
       game_level : game_level 
     })
 
     // Mikäli virheitä esiintyy käyttäjän luonnin aikana, käsitellään ne
     try {
-        const savedUser = await user.save();            // User-objektin tallennus tietokantaan save-metodilla. Odotetaan vastausta tietokannalta await-avainsanaa käyttäen
-        response.json(savedUser);                       // Lähetetään clientille vastaus talletetusta user-objektista JSON:na
+        const savedUser = await user.save();            
+        response.json(savedUser);                       
     } catch (error) {
-        response.status(500).json({ error: "Failed to create user." });     // Status 500 palvelimen sisäiset virheet (pyyntöä ei pysty toteuttaamaan) ja 404 kun resurssia ei ole
+        response.status(500).json({ error: "Failed to create user." });    
     }
 });                          
 
 
-// GET-pyynnön käsittelijä: Haetaan kaikki käyttäjät tietokannasta (pelin lopussa tulostaulua varten). TOIMII!
+// GET-pyynnön käsittelijä: Haetaan kaikki käyttäjät tietokannasta (pelin lopussa tulostaulua varten).
 app.get('/users', async (request, response) => {
     try {
         const users = await User.find({});
@@ -106,7 +106,7 @@ app.get('/users', async (request, response) => {
     }
 });
 
-// GET-pyynnön käsittelijä: haetaan käyttäjä nimen perusteella. TOIMII!
+// GET-pyynnön käsittelijä: haetaan käyttäjä nimen perusteella.
 app.get('/users/:name', async (request, response) => {
     try {
         const userName = request.params.name;
@@ -121,7 +121,7 @@ app.get('/users/:name', async (request, response) => {
     }
 });
 
-// GET-pyynnön käsittelijä (ID:n kanssa): Haetaan tietty käyttäjä tietokannasta. TOIMII!
+// GET-pyynnön käsittelijä (ID:n kanssa): Haetaan tietty käyttäjä tietokannasta.
 app.get('/users/:id', async (request, response) => {
     try {
         const user = await User.findById(request.params.id);
@@ -135,11 +135,11 @@ app.get('/users/:id', async (request, response) => {
     }
 });
 
-// DELETE-pyynnön käsittelijä: Poistetaan ID:n mukainen käyttäjä tietokannasta. TOIMII!
+// DELETE-pyynnön käsittelijä: Poistetaan ID:n mukainen käyttäjä tietokannasta. 
 app.delete('/users/:name', async (request, response) => {
     const userName = request.params.name;
     try {
-        const deletedUser = await User.deleteOne({ name: userName });       // deleteOne() on uudempi metodi, joka ottaa objektin pyynnöstä ja tässä tapauksessa poistaa nimen mukaisesti
+        const deletedUser = await User.deleteOne({ name: userName });     
        
         if (deletedUser.deletedCount > 0) {
             response.json({ message: "User deleted successfully." });
@@ -152,21 +152,21 @@ app.delete('/users/:name', async (request, response) => {
 });
 
 
-// PUT-pyynnön käsittelijä: Käyttäjän nimen ja vaikeusasteen päivitykseen. (Ideana käyttäjä itse voi päivittää) TOIMII!
+// PUT-pyynnön käsittelijä: Käyttäjän nimen ja vaikeusasteen päivitykseen. 
 app.put('/users/:name', async (request, response) => {
     const userName = request.params.name;
-    const { newName, new_game_level } = request.body;              // pyynnössä päivitettävä nimi ja vaikeusaste
+    const { newName, new_game_level } = request.body;             
 
     try {
-        const user = await User.findOne({ name: userName });               // Etsitään käyttäjä nimen mukaisesti
+        const user = await User.findOne({ name: userName });              
 
         if (!user) {
-            return response.status(404).json({ error: "User was not found." });  // Jos käyttäjää ei löydy, lähetetään 404-status
+            return response.status(404).json({ error: "User was not found." });
         } 
         
-        user.name = newName;                // nimen päivitys
+        user.name = newName;               
     
-        if (new_game_level !== undefined) {     // vaikeustason antaminen on vapaaehtoista, mutta päivitetään tarvittaessa
+        if (new_game_level !== undefined) {    
             user.game_level = new_game_level; 
         }
 
@@ -179,16 +179,16 @@ app.put('/users/:name', async (request, response) => {
 });
 
 
-// PUT-pyynnön käsittelijä: Pisteiden päivitys (pelin loputtua). TOIMII!
+// PUT-pyynnön käsittelijä: Pisteiden päivitys (pelin loputtua).
 app.put('/users/:name/:points', async (request, response) => {
-    const { name, points } = request.params;                          // oletetaan käyttäjän nimen ja pisteiden olevan pyynnössä
+    const { name, points } = request.params;                          
 
     try {
-        const user = await User.findOne({ name: name });         // Etsitään käyttäjä nimen mukaisesti
+        const user = await User.findOne({ name: name });        
         const pointToUser = points;
 
         if (!user) {
-            return response.status(404).json({ error: "User was not found." });  // Jos käyttäjää ei löydy, lähetetään 404-status
+            return response.status(404).json({ error: "User was not found." }); 
         }
         user.points = pointToUser;
         const updatedUser = await user.save(); 
@@ -200,10 +200,9 @@ app.put('/users/:name/:points', async (request, response) => {
 });
 
 
-
 // WORSLISTS API:t
 
-// Haetaan kaikki sanalistat tietokannasta. TOIMII!
+// Haetaan kaikki sanalistat tietokannasta. 
 app.get('/wordlists', async (request, response) => {
     try {
         const wordlists = await Wordlist.find({});
@@ -214,7 +213,7 @@ app.get('/wordlists', async (request, response) => {
 });
 
 
-// Haetaan tietyn vaikeusasteen sanalista (easy, medium tai hard) tietokannasta. TOIMII!
+// Haetaan tietyn vaikeusasteen sanalista (easy, medium tai hard) tietokannasta. 
 app.get('/wordlists/:game_level', async (request, response) => {
     try {
         const gameLevel = request.params.game_level;
@@ -229,7 +228,7 @@ app.get('/wordlists/:game_level', async (request, response) => {
     }
 });
 
-// Haetaan yksittäinen sana sanalistan vaikeustason mukaan. TOIMII!
+// Haetaan yksittäinen sana sanalistan vaikeustason mukaan.
 app.get('/wordlists/:game_level/:word', async (request, response) => {
     try {
         const gameLevel = request.params.game_level;
@@ -257,7 +256,7 @@ app.get('/wordlists/:game_level/:word', async (request, response) => {
     }
 });
 
-// Lisää sana tietyn vaikeustason sanalistaan. TOIMII (lopussa käyttäjä voi lisätä halutessaan uusia sanoja eri listoille)
+// Lisää sana tietyn vaikeustason sanalistaan. (lopussa käyttäjä voi lisätä halutessaan uusia sanoja eri listoille)
 app.put('/wordlists/:game_level/:addWord', async (request, response) => {
     try {
         const difficultyLevel = request.params.game_level;
