@@ -45,7 +45,7 @@ Itse pelinäkymä. Sanat valikoidaan sattumanvaraisesti vaikeusasteen mukaan ja 
 
 [peli]: /pictures/peli.png
 
-Pelin päätyttyä ilmestyy loppunäkymä, jossa näkyy TOP-10 listaus. Samalla voi poistaa pelaajan käytössä olevan nimimerkin tai lisätä pelissä käytettäviä sanoja tietokantaan.
+Pelin päätyttyä näkyy TOP-10 listaus. Samalla voi poistaa pelaajan käytössä olevan nimimerkin tai lisätä tulevissa peleissä käytettäviä sanoja tietokantaan.
 
 ![Loppunäkymä][loppu]
 
@@ -61,7 +61,7 @@ Sovellusta voi pelata selaimessa osoitteessa: https://student.labranet.jamk.fi/~
 
 ## Miksi projekti on tehty ja mitä olen oppinut?
 
-Ohjelman pääasiallinen tarkoitus oli opetella eri full-stack sovelluksen kehitykseen liittyviä teknologioita ja miten ne toimivat keskenään. Itselleni tämä oli opettavainen ja mielekäs projekti, jossa pääsi eritoten JavaScriptiin perehtymään tarkemmin. Sisällöltään hirsipuu-pelin toteuttaminen ei ollut kaikista omaperäisin idea ja se toimisi vallan hyvin myös frontend-sovelluksenakin, mutta sopi kuitenkin hyvin harjoitteluna pienen full-stack sovelluksen toteuttamiseen. Käyttöliittymän ohjelmointi tulee tulevaisuudessa luultavasti olemaan helpompaa, kun pääsee joskus tutustumaan esimerkiksi Reactiin tarkemmin. Nyt esimerkiksi yksittäisten elementtien luonti JavaScriptillä oli suhteellisen työlästä. Erityisen kiva oli päästä raapaisemaan pintaa palvelinpuolen ohjelmoinnista luomalla API-rajapintoja ja MongoDB-tietokannan sisältöä. Ohjelman asettelut eivät kaikilla näytöillä ole optimaaliset, lisäominaisuuksia voisi aina olla lisää ja muutenkin testausta olisi voinut olla enemmän mutta kokonaisuutena ohjelma ajaa asiansa. 
+Ohjelman pääasiallinen tarkoitus oli opetella eri full-stack sovelluksen kehitykseen liittyviä teknologioita ja miten ne toimivat keskenään. Itselleni tämä oli opettavainen ja mielekäs projekti, jossa pääsi perehtymään eritoten JavaScriptiin tarkemmin. Sisällöltään hirsipuu-pelin toteuttaminen ei ollut kaikista omaperäisin idea ja se toimisi vallan hyvin myös frontend-sovelluksenakin, mutta aiheena sopi kuitenkin hyvin pienen full-stack sovelluksen toteuttamiseen. Käyttöliittymän ohjelmointi tulee tulevaisuudessa luultavasti olemaan helpompaa, kun pääsee joskus tutustumaan esimerkiksi Reactiin tarkemmin. Nyt esimerkiksi yksittäisten elementtien luonti JavaScriptillä oli suhteellisen työlästä. Erityisen kiva oli päästä raapaisemaan pintaa palvelinpuolen ohjelmoinnista luomalla API-rajapintoja ja MongoDB-tietokannan sisältöä. Ohjelman asettelut eivät kaikilla näytöillä ole optimaaliset, lisäominaisuuksia voisi aina olla lisää ja muutenkin testausta olisi voinut olla enemmän, mutta kokonaisuutena ohjelma ajaa asiansa. 
 
 ## Ohjelman tekijä
 
