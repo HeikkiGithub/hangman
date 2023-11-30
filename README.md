@@ -1,7 +1,7 @@
 # Hangman game
 The classic hangman game as a full-stack app. You can play the game at https://student.labranet.jamk.fi/~AE9377/hangman_client_side/index.html
 
-**It is recommended to use Firefox. With other browsers, and especially on phones, the layout may vary unexpectedly.** 
+**It is recommended to play the game in full-screen mode on a computer. On phones, the layout may vary unexpectedly.** 
 
 # Hirsipuu-peli: esittely
 Toteutettuna klassinen hirsipuu-peli full-stack sovelluksena. Tämä on ensimmäinen full-stack sovellukseni, joka on tehty harjoitustyönä JAMK:n full stack-kurssilla. 
@@ -56,12 +56,12 @@ Pelin päätyttyä näkyy TOP-10 listaus. Samalla voi poistaa pelaajan käytöss
 
 Sovellusta voi pelata selaimessa osoitteessa: https://student.labranet.jamk.fi/~AE9377/hangman_client_side/index.html
 
-**Ohjelmaa on testattu lähinnä Firefox-selaimella ja asettelut voivat vaihdella selaimesta riippuen. Ohjelmaa ei ole tarkoitus käyttää puhelimella.**
+**Peliä kannattaa pelata tietokoneella koko näytöllä, sillä asettelut heittävät erityisesti puhelimen näytöllä.**
 
 
 ## Miksi projekti on tehty ja mitä olen oppinut?
 
-Ohjelman pääasiallinen tarkoitus oli opetella eri full-stack sovelluksen kehitykseen liittyviä teknologioita ja miten ne toimivat keskenään. Itselleni tämä oli opettavainen ja mielekäs projekti, jossa pääsi perehtymään eritoten JavaScriptiin tarkemmin. Sisällöltään hirsipuu-pelin toteuttaminen ei ollut kaikista omaperäisin idea ja se toimisi vallan hyvin myös frontend-sovelluksenakin, mutta aiheena sopi kuitenkin hyvin pienen full-stack sovelluksen toteuttamiseen. Käyttöliittymän ohjelmointi tulee tulevaisuudessa luultavasti olemaan helpompaa, kun pääsee joskus tutustumaan esimerkiksi Reactiin tarkemmin. Nyt esimerkiksi yksittäisten elementtien luonti JavaScriptillä oli suhteellisen työlästä. Erityisen kiva oli päästä raapaisemaan pintaa palvelinpuolen ohjelmoinnista luomalla API-rajapintoja ja MongoDB-tietokannan sisältöä. Ohjelman asettelut eivät kaikilla näytöillä ole optimaaliset, lisäominaisuuksia voisi aina olla lisää ja muutenkin testausta olisi voinut olla enemmän, mutta kokonaisuutena ohjelma ajaa asiansa. 
+Ohjelman pääasiallinen tarkoitus oli opetella eri full-stack sovelluksen kehitykseen liittyviä teknologioita ja miten ne toimivat keskenään. Itselleni tämä oli opettavainen ja mielekäs projekti, jossa pääsi perehtymään eritoten JavaScriptiin tarkemmin. Sisällöltään hirsipuu-pelin toteuttaminen ei ollut kaikista omaperäisin idea ja se toimisi vallan hyvin myös frontend-sovelluksenakin, mutta aiheena sopi kuitenkin hyvin pienen full-stack sovelluksen toteuttamiseen. Käyttöliittymän ohjelmointi tulee tulevaisuudessa luultavasti olemaan helpompaa, kun pääsee joskus tutustumaan esimerkiksi Reactiin tarkemmin. Nyt esimerkiksi yksittäisten elementtien luonti JavaScriptillä oli suhteellisen työlästä. Erityisen kiva oli päästä raapaisemaan pintaa palvelinpuolen ohjelmoinnista luomalla API-rajapintoja ja MongoDB-tietokannan sisältöä. Ohjelman asettelut eivät kaikilla näyttökooilla ole optimaaliset, lisäominaisuuksia voisi aina olla lisää ja muutenkin testausta olisi voinut olla enemmän, mutta kokonaisuutena ohjelma ajaa asiansa. Mukavia pelihetkiä :)
 
 ## Ohjelman tekijä
 
