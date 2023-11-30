@@ -28,8 +28,8 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Testataan toimiiko yhteys ja tulostetaan vastaus konsoliin
 const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))        // kirjataan virhe konsolille
-db.once('open', function() {                                            // yhteys onnistunut
+db.on('error', console.error.bind(console, 'connection error:'))        
+db.once('open', function() {                                          
   console.log("Database test: connected")
 });
 
@@ -112,7 +112,7 @@ app.get('/users/:name', async (request, response) => {
         const userName = request.params.name;
         const user = await User.findOne({ name: userName });
         if (user) {
-            response.json(user);       // Kyseisen niminen käyttäjä on tietokannassa
+            response.json(user);     
         } else {
             response.status(404).end();
         }
